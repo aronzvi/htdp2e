@@ -1,0 +1,34 @@
+https://course.ccs.neu.edu/cs5010sp15: 
+
+recipes
+https://course.ccs.neu.edu/cs5010sp15/recipe.html
+
+recipe guidance. guidelines! very good! read and reread!!
+https://course.ccs.neu.edu/cs5010sp15/implementation.html
+
+style
+https://course.ccs.neu.edu/cs5010sp15/style.html
+
+
+problem sets 
+https://course.ccs.neu.edu/cs5010sp15/Homeworks.html
+
+this uni has the same course every year. Content changes. 15 is a good year for you now:
+
+available on github https://github.com/mwand/cs5010...
+online https://course.ccs.neu.edu/cs5010f16 cs5010f17 ...
+
+
+----
+
+https://course.ccs.neu.edu/cs2500f17
+labs section has good explanations. abstractions, lambda...
+style section 
+
+
+newer version less stuff:
+https://course.ccs.neu.edu/cs2500/index.html
+
+
+fundementals 2: classes
+https://course.ccs.neu.edu/cs2510h

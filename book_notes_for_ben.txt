@@ -1,0 +1,14 @@
+ex 453:
+
+Not clear what to do with upper-case letters
+
+ex 457:
+send feedback to HTDP about 72/r misleading and the
+surprising lack of "step 3" insight (I guess coming up with the
+equation was supposed to be the challenge.)
+
+
+Intermezzo 5:
+contains-flatt?:
+the book confuses "time for one basic step" and
+"worst-case sum time for all steps at any one level"

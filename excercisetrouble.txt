@@ -1,0 +1,2284 @@
+43:
+I have no idea what they want here
+
+45:
+can't get the start right with modulo. using if 
+
+47:
+Why is bottom part of red rectangle on top of the black frame?
+
+91: 
+- why is (= x the limits) not enough in get-direction? why does x pass the limits?
+- not liking that I need separate functions for x and direction since they both depend on  
+eachother. better ways to do this? 
+
+
+93:
+- Outline of gauge frame missing at edges
+- body rectangle shifts to left when pushing hapiness at 100%
+
+
+
+
+
+98: 
+Huge mess. Had trouble following the recipes. A better way to detect proximity as mentioned in the excersise? - I don't lke missile-hit-ufo since it mixes missile and ufo and not sure about the template. Should it be a seperate function that works on objects?
+
+
+
+2.
+do we need to handle UFO passed the ground?
+
+
+
+
+
+
+100:
+Why does the rocket have to be <= ufo. why isn't = enough? Not sure about the how you implemented si-control - So many tests...
+
+
+
+102: 
+si-control. trouble following template. tank-fire-missile - uses both missile and tank but template from tank
+
+
+
+
+
+104: 
+is it correct to use seperate data definitions for each type or use just one and have a type feild?
+
+
+
+106:
+I keep on repeating the tests because of helpers. Writing tests for render is terrible without using helper functions in tests. gets even worse for 107
+
+107:
+try option #2 for keyevents. -- no need. they said to choose one and I chose the first option
+
+
+
+
+
+108: 
+rules for eliminating guards in switch-to-green - what did I want here???
+
+
+109:
+not sure about design / templating process - used ExpectsToSee for transition and large enum special case for transition helpers
+transition-from-expect and transition-from-start are weird since they don't use ets?
+Should be able to reset in case finish or error
+
+
+
+113:
+template for sigs? Do we need to call fn-for-tank, fn-for-ufo fn-for-missile over the ufo, tank and missile?
+Do we need to call the above predicts in implementation? (ufo?, tank? etc)
+
+114:
+What predicate for Graphical editor???
+
+
+
+========= intermezzo 1
+Constant Definitions:
+Why do constants calling functions require the function to be defined above the constant wheres functions calling other functions do not require functions to be defined above?
+(define RADIUS 10)
+(define DIAMETER (* 2 RADIUS))
+(define AREA-OF-RADIUS (area RADIUS))
+(define (area r) (* 3.14 (* r r)))
+
+126:
+are they all values since they are all structure values?
+
+
+--------
+
+========== 2:
+ 137:
+Not sure of my exlaination here
+
+139:
+What does sum compute for an element of List-of-numbers? the sum of the numbers subtracting when negative??
+
+140:
+The table did not help me here? need to learn to use the table
+
+144: 
+verify and improve the explaination?
+
+
+
+148:
+I don't have a good reason why ot why not to accomidate empty lists asides from simplicity of the data and function definitions 
+
+
+153:
+If I don't ovraly the rectangle over the empty scene and just directly use the rectangle as the background I am missing some of the border. why???
+
+
+
+
+9.4 Russian Dolls:
+How to draw the dolls shrinking them as we go?
+
+The layer struct appears to be self refirential along with the RD data definition. So it seems that we are using two self refertials data definitions. this very odd seems odd. I don't really understand the combination of them both. 
+
+
+
+
+157:
+changing the size depends on the type of shape. Cannot use a single constant for size. 
+
+158:
+implemented remove-off-canvas in tock. it works but not sure how/why. run with stepper
+
+
+
+
+166:
+wage*.v3: should work-to-paycheck call wage to calculate wage? (we are already decomposing for employee...) 
+
+-- I don't understand my question here!
+
+169:
+so many identical tests across functions because of helpers. is it correct to further split legal-posn? into legal-posn-x? and legal-posn-y? this seemed to make testing more simple but again results in many repeating tests
+
+
+
+173:
+What is the output part of the siganture for writing to a file? How do I test here? I remember seeing something with redirecting the outpust maybe in the first chapter
+
+How to test here??? 
+
+
+
+
+175:
+Not including /n in count for letters. not sure if correct or not since wc does
+
+
+
+176:
+!!!! SKIPPED !!!
+template rules for fn-for-matrix. specifically the base case
+(empty? (first lln)) in base case of transpose???
+Tried starting to design first* I don't know what the hell to do here.
+Skipping for now
+
+
+
+
+10.4 A Graphical Editor, Revisited:
+
+"And as if this isn’t enough, you may wish to compare this simple definition with the one from exercise 84 and figure out why the other one needs an auxiliary function while our definition here doesn’t" - I didn't use an auxilary in my solution editor-add-to-end in ex 84
+
+
+
+184:
+#3 what do they want here?
+
+11.3 Auxiliary Functions that Recur:
+stub - when to return empty list? when list itself?
+
+; Number List-of-numbers -> List-of-numbers
+; inserts n into the sorted list of numbers alon
+(define (insert n alon) alon)
+vs 
+(define (insert n alon) empty)
+
+"Returning alon ensures that the result is appropriate as far as the function signature is concerned, but in general, the given list isn’t sorted and this result is wrong."
+
+
+189:
+did not use any helpers here?
+should we use a data definitions for a sorted list of numbers? how to define it?
+
+
+
+
+
+190:
+(define (suffixes lo1s)
+  (cond
+    [(empty? lo1s) empty]
+    [else
+     (append-to-lol lo1s (suffixes (rest lo1s)))]))
+
+vs 
+
+(define (suffixes lo1s)
+  (cond
+    [(empty? lo1s) empty]
+    [else
+     (append (suffixes (rest lo1s)) (list lo1s))]))
+
+
+
+192:
+Not sure about my answers to the questions part.
+
+
+193: 
+did add-at-end using Polygon template. Maybe better to use NELoP??
+
+
+
+
+
+196:
+my understanding here is that is that count-by-letter returns list of count for all letters and I use a helper - count-by-letters that recieves list of letters and dict. I do not like the name of this helper count-by-letters. it practically does what the main function count-by-letter does and the name is bad. I've encountered similar situations before. What to name helper in such situations?
+
+
+
+
+197:
+;(define (most-frequent d) (make-letter-count "a" 0)) ;stub
+is (make-letter-count "a" 0) a good value for stub? what is an empty struct value?
+
+
+what should the result be for most-frequent on empty dictionary? is it ok to assume at least one word in the dictionary - decided not to assume anythng and return (make-letter-count "a" 0) for empty
+
+
+
+why to we get emptys when using stub for insert-lc - ((insert-lc lc lolc) lolc) 
+
+not sure about max-count.v2 handeling empty to return (make-letter-count "a" 0)
+
+my reasoing here of v1 vs v2  - v1 taking more time is not enough. why does it take more time? need to understand better! maybe there are other reasons\arguments?
+
+
+198:
+words-by-first-letter-with-letters - not liking this long name. again a problem naming helper that does the wrappers work plus maybe a param
+
+words-by-first-letter-with-letter - echh
+
+(define (insert-dict d lod) lod) ;stub again causes calls up the chain to fail on emty list. why? 
+
+does the stepper step into check-expects?
+
+Can I call a function if it is defined below?
+
+I did the second approach for words-by-first-letter  and have empty when no words are present for given letter. I see how the tests are more work but I do not see how this adds complexity to the design of most-frequent.v2. MAybe my design of most-frequent.v2 is wrong??
+
+try first approach for words-by-first-letter. What auxilary function is needed?
+
+what are they talking about in Note on Intermediate Data and Deforestation???
+ 
+
+
+203:
+
+not liking your tests here for dates
+
+
+your implementation of before with big cond is strange here! some other way?
+
+
+206:
+
+not sure about turn part of signature find-association - Association or Any ??
+
+
+
+
+207:
+
+dealing with extracting the value from the assoc. this is extremely ugly!!! - 
+
+ (define (total-time lassoc)
+  (cond
+    [(empty? lassoc) 0]
+    [else
+     (if (number? (find-association "Total Time" lassoc 0))
+         0
+        (second (find-association "Total Time" lassoc 0)))]))
+
+There must be a better way!
+
+
+208:
+
+1.
+since I am using create-set the behviour of duplicates is dependant on it for tests. intially I did
+(check-expect (boolean-attributes LLISTS2) (list "Protected" "Bool1" "Bool2"))
+which is wrong and it should be 
+(check-expect (boolean-attributes LLISTS2) (list "Bool1"  "Protected" "Bool2"))
+I guess it is ok to work out the behevaiour of the function before with the tests but it feels wrong. must be a better way here. use check-satisfied as shown with alternative-words and all-words-from-rat? in 12.3 Word Games, Composition Illustrated? 
+
+2.
+boolean-attributes:
+intially did: 
+(define (boolean-attributes llists)
+  (cond
+    [(empty? llists) empty]
+    [else
+     (create-set (append (lassoc-all-boolean-attributes (first llists)) 
+                         (boolean-attributes (rest llists))))]))
+
+and did not like the append. Was also having trouble testing\debugging what was being passed to create-set. also seems like we are doing more than one task
+
+
+3.
+lassoc-all-boolean-attributes:
+not sure about (cons (first (first lassoc)) to get the string
+
+4.
+track-as-struct:
+"empty" track value for stub?
+
+
+where to place predicates for association and bsdn?
+
+
+
+211:
+
+is it correct to place AS-LIST directy in in-dictionary? maybe wrap with another function that takes los and dict?
+
+
+
+212:
+what to do for empty?
+how come we used check-satisfied for alternative-words but not here? 
+
+
+
+213:
+base case answer - empty for insert-everywhere/in-all-words and insert-first/in-all-words is not trivial. you got it wrong at first for insert-everywhere/in-all-words. I guess it can make sense since there are no words to insert into. But notice that insert-everywhere-in-word the base case answer is not empty for empty. Does this make sense? I guess to insert for an empty word. Could have easily got this wrong?
+
+
+
+
+215:
+difference betwwen physical and logical representation in regard to changing the size of segments??
+
+the worm data definition feels clunky. use direction enum with all 4 directions somehow? instead of axis?
+
+not sure about posn+ in tock. used template from axis 
+
+handle-key - so many tests but still not all (for each state each key... ). what exactly do I need to test here? what not?
+
+set-worm-direction-* functions. The set-negative and set-positive are weird. somehting feels off 
+
+
+
+216:
+
+signature for stop-when in big-bang?
+
+"stops if the worm has reached the walls of the world" - I implemented so that it stops when we pass the walls. It did not make sense to end if we have just reached a wall since we can change direction at the edge
+
+should have the worm stop when it touches the wall and not pass. this is what they show in the photo. 
+
+
+
+217:
+
+Segments alias for ListOfPosn? how would I use exactly?
+
+
+tests are crazy - repeating the tests throughout the entire call chain of move-worm. must be a better way?
+
+Template for handle-key. what happens with w? should it be wrapped in helper? why?
+
+handle-key - is it necessary to have function to set each direction - set-worm-direction-xxx? is it better to call set-worm-direction directly in handle with appropriate direction instead?
+
+218:
+
+2nd pass:
+there is some bug here with worm bieng falsly detected as running into self when playing with the directions. need to debug this:
+
+why doesn't (ran-into-self? (make-worm
+ "right"
+ (list
+  (make-posn 300 200)
+  (make-posn 300 210)
+  (make-posn 310 210)
+  (make-posn 310 200)
+  (make-posn 310 190)
+  (make-posn 320 190)
+  (make-posn 330 190)
+  (make-posn 340 190)
+  (make-posn 350 190)
+  (make-posn 350 180))))
+
+return true when this is the state producd after game ends running into self?
+
+
+
+
+1st pass:
+made it so that worm can not change direction back on itself. first of all this makes sense and is how the game is implelemnted by others.
+this also resolves issue having with
+worm run into itself if length is two with current implementation. change of diretion left->right, right->left etc does not work well here either
+
+"Hint (1) To determine whether a worm is going to run into itself, check whether the position of the head would coincide with one of its old tail segments if it moved" - why check on if it moved and not after it moved?
+
+I implemented by checking if moved worm head coincides. I think this is what they want?
+
+ran-into-self? tests are kind of bad. as noted above we cant run into self with just two segements yet you have tests for these
+
+is it ok to use render-worm in tests for render-game-over?
+
+again having trouble repeating tests when adding helpers - did render-game-over with tests. then decided to add helper render-game-over-with-msg. copied the tests
+
+should have the worm stop when it touches the wall and not pass. this is what they show in the photo. 
+
+219:
+
+your understangin of food-create - mas o menos
+
+first pos for food-create in worm-main??
+
+will-worm-eat? what tests are necessary?
+
+don't know how to get ranom food always placed where worm can get to same position (multiply random by worm speed but set limit???). I think I need to implement using the logical approach and not the physical
+
+see worm hitting itself somehow incorrectly?
+
+skipping for now!!!
+
+
+
+
+219: logical implementation:
+
+is segement even necesary? just use posn?
+
+should food be segment or posn?
+
+how to test handle-tick food creation? check-random is good but will not handle not genrating the same value as before as create-food does
+
+testing game-over? which is composition. what do I test. I remeber somehting about testing that all composed functions are called but not clear
+
+
+render-game-over - ok to use render-worm-game in tests?
+
+render-game-over 
+  will extract worm twice. one for hit walls check and then passing entire wormgame again to render with message
+  pass image or better to pass wg to render-game-over-msg?
+
+BUG: changing direction very quicky twice with allowed direction change followed by opposite of worm direction adds head to worm and results in worm running into itself
+
+
+
+224:
+I am not sure about the Charges data structure placing timer and fired charges together.
+I placed them together mainly so that I can pass just the structure in to handle launch since I need both the timer and the fired charges. also it kinf made sense to havee them together and not seperate
+However, this causes me to have wrapper functions when I need to access the fired charges:
+
+
+(define (charges-move c)
+  (make-charges (charges-next-charge-timer c) 
+                (move-fired-charges (charges-fired c))))
+
+(define (charges-hit-tank? t c)
+  (charges-fired-hit-tank? t (charges-fired c)))
+
+(define (remove-off-canvas-charges c)
+       (make-charges (charges-next-charge-timer c)
+                     (remove-off-canvas-fired-charges (charges-fired c))))
+
+Do not understand wht they mean by adding a running text.
+Skipped UFO fleet for now. Too long
+
+
+
+
+
+225: 
+skipping for now. These projects are too big. will never finish the book. todo???
+
+
+
+
+227:
+"Formulate a data representation for the BW Machine" - don't we have the FSM representation?? do they mean an example using the FSM representation 
+
+
+230:
+where do I place the definitions of kpattern-transitions and fsm-kpattern
+
+
+
+
+
+
+========= intermezzo 2:
+should probally reread. I do not understand the order of unquate and splicing etc
+
+
+233: 
+I do not understand the order of the somehting like this ,@(make-row '( 1  2))
+
+
+
+234: 
+
+what is the return type here in signature? ... nested list ...?
+what should return for stub? - used empty
+
+hmm, mas o menos... again not sure about order of quasiquote\unquote\escape 
+
+========= Chapter 3:
+
+238:
+
+need more precise answer for the difference in speed. called more an less is not enough
+
+239:
+
+I do not know how to properly form the instantiated data definition. this looks wrong:
+
+; A String Boolean pair is [List String Boolean]
+; interp, a pair of String and Boolean
+(define PSB1 (cons "dfdf" (cons #true '())))
+
+maybe
+; [List String Boolean] 
+; interp, a pair of String and Boolean
+(define PSB1 (cons "dfdf" (cons #true '())))
+
+240:
+
+again not sure how to instantiate with definition
+
+
+
+243:
+
+not really sure about anything here!
+
+
+248:
+
+the steps here are just regular cond evaluation. I don't know what they want...
+"Explain each step as the use of a law" what laws??
+
+
+
+
+250: 
+missing signature purpose and tests for tabulate
+
+252:
+
+not sure why they say it is an extra challenge. fold2 and fold1 from previous ex are identical.
+what insights do we get???
+
+
+
+
+##
+15.2 Similarities in Signatures:
+reread this section!
+
+
+"The arrow notation consumes an arbitrary number of classes of data and describes collections of functions." I don't understand this
+
+
+
+"Again, the signatures are in pictorial form and with arrows connecting the corresponding differences. These markups suggest that the differences in the second argument—a function—are related to the differences in the original signatures. Specifically, Number and IR on the left of the new arrow refer to items on the first argument—a list—and the Number and String on the right refer to the items on the result—also a list." ????!!!!
+
+253:
+
+not sure what they want here. do they want me to provide examples of built-in ISL functions? comeup with my own? I cannot find built in ones for 
+
+; [Boolean String -> Boolean]
+; [Number -> [List-of Number]]
+
+254:
+
+do they expect me to define the functions here?? if not, how do I follow the thier steps. not sure about my answer. I guess it is correct?
+
+255: 
+not sure if my answer is correct
+
+
+
+
+258:
+
+"If a globally defined function is widely useful, do not make it local" 
+where does this apply here? render-line? last?
+
+259:
+
+should I nest locals? how much? did all flat...
+what happens to tests if we use local?
+
+
+
+16.4 Computing with local:
+the inf example for renaming and lifting. not following well. It looks like there are mistakes? 
+
+
+262:
+I think the first version you did embedding  make-inner-list is better since it expresses that the index doesn't change by not being a parameter (where did I get this idea from?)
+I don't like the function names make-outer-list, make-inner-list also I don't like the variable names ni length 
+
+
+
+
+
+267:
+translate - how do I define NumberPair data -> a list of two length?
+
+
+
+
+
+270:
+#6 tabulate - did this with reverese but no local. I think they want something else because 288 #6 with lambda doesn't make sense
+
+
+
+
+274: 
+Skipped. I don't kno how to solve this and am not studying!
+
+
+
+
+275:
+Not sure about the process and kind of working backwards replacing what was implelemnted previously with abstractions instead of designing from scratch
+
+most-frequent - is it correct to use composition here and not something more direct with abstraction
+
+(starts-with-inc s n) needs to be inside local of starts-with# so that it can access l
+
+should (starts-with? be embedded in second local? first? nor embedded at all? we end up with no tests for the functions when places in local
+
+words-by-first-letter-with-letter - am I abusing local here with extra embedded starts-with-l?? it seems very hacky and difficult to understand when extra level of embedded especially (filter starts-with-l? d) - we are using d in the embedded local
+
+
+276:
+select-albums - how to make create-set from exisitng abstraction??
+
+277:
+
+look for opportunities to create abstractions. Consider moving lists of objects as one example where abstraction may pay off - the missile and charge moving functions both just call map. what benifit would we have with: ???
+
+(define (missiles-move lom)
+  (move-objects missile-move lom))
+
+(define (move-fired-charges loc)
+  (move-objects charge-move loc))
+
+(define (move-objects fn-move loo)
+  (map fn-move loo))
+
+other opertunities to create abstractions?
+
+
+278
+render-segments is the only place where I did my own list processing??
+
+
+
+
+285:
+
+
+convertFC - using the actual formula in the test. How to test with actual list of values where values can be a long bit differernt fraction. I want check-within but for each element in the list
+   
+
+286:
+is it correct to embbed local in lambda. I guess - because if we did lambda for price-diff (lmabda in lmabda)  we would need to repeat it twice
+
+how to make template here...
+
+
+288:
+#5 - lambda doesn't need local??? need to understand this better! probably has something to do with
+
+(define double (λ(x) (+ x x)))
+
+==
+
+(define double
+  (local ((define (the-function x) (+ x x)))
+    the-function))
+
+when you just define/call a simple lambda inside a function it has access to all the functions variables:
+
+(define (find-name s los)
+         ;(String -> Boolean)
+  (ormap (lambda (si)
+           (... si s)) 
+           los))
+
+  what about an extra level down does it still have access to above? - yes
+
+  (define (f ln n)
+  (map (lambda (ni)
+         ((lambda (ni2)
+            (+ ni2 n)) ni))
+       ln))
+
+(f (list 1 2 3) 3)
+== 
+(list 4 5 6)
+
+
+
+17.2 Computing with lambda
+
+don't understant very well from "the point is" and y-combinator
+
+
+289:
+andmap always return true for empty list. hmm??? 
+
+skipping 290 - 291 for now.  repeats all Finger Exercises: Abstraction excercises???
+
+
+
+290: 
+did not use lambda (or even local!) at all just existing functions??
+skipping horizontal and vertical compose functions since don't use lambda
+
+ 
+17.4 Specifying with lambda
+Stop! Could you redefine sorted to use sorted? from exercise 292? looks like I can...
+
+
+Explain why sorted/l does not consume cmp as an argument. 
+I don't know. I guess becuase we don't have to but is there is a better reason???
+
+
+
+
+293:
+
+skipping! How to test for first sublist that starts with x without recreatinf\reusing function that finds first sublist that starts with x???
+
+294:
+skipping! same problem as 293.  How to test for index of first x  without recreatinf\reusing function that finds first index of x???
+
+295:
+not sure about (random-posns/bad ) solution. you propose that we need to check for random 
+
+
+
+296:
+skipped compas and pencil...
+
+298:
+not sure about my solution calling big-bang. I don't really understand thier point. maybe revisit
+
+How to test my-animate? 
+"Note This case is an example where it is possible to write down examples/test cases easily, but these examples/tests per se do not inform the design process of this big-bang function" ??
+
+
+
+--------------------   Intermezzo 3 ------------------------
+
+
+302:
+skipping. not sure what they want here
+
+
+ISL for Loops:
+for*/list - In addition, for*/list collects the nested lists into a single list by concatenating them with foldl and append. which lists exactly are collected and when? why can't we just append without foldl? see 304 question for more detailes
+
+
+304:
+(for*/list ([i 2] [j '(a b)]) (list i j))
+== 
+
+(for/list ([i 2])
+  (for/list ([j '(a b)])
+    (list i j)))   +  
+
+    for*/list collects the nested lists into a single list by  concatenating them with foldl and append. how\where exactly?
+
+    if we do 
+    (foldl append empty (for/list ([i 2])
+                      (for/list ([j '(a b)])
+                        (list i j))))
+
+    we get 
+    (list (list 1 'a) (list 1 'b) (list 0 'a) (list 0 'b))
+    istead of 
+    (list (list 0 'a) (list 0 'b) (list 1 'a) (list 1 'b))
+
+    (foldr append empty (for/list ([i 2])
+                      (for/list ([j '(a b)])
+                        (list i j)))) works
+
+    is it a mistake then and it should be foldr??
+
+------
+
+
+arrangements Figure 108:
+
+
+understansd arrangements so so
+
+
+-------
+
+Stop! Imagine how a for/fold loop would work. - no idea
+
+
+
+Stop again! It is an instructive exercise to reformulate all of the above examples using the existing abstractions in ISL+
+
+did and-map and or-map. 
+I do like the signature Y or false. more proper way to express this??
+
+requires to  pass in the full generated list of values.
+with rest of functions - for/sum, for/product, for/string
+pass in full generated list of values and function to apply. not sure if this is what they wanted - passing in the list of values or I am supposed to generate them myself 
+
+
+----
+
+306:
+
+tabulate - is there a cleaner way than what you did? (appending list from f(n) - f(1) with a list of just (f(0)) )
+
+-----
+
+Pattern Matching:
+
+Design the move-right function:
+------------------------
+
+
+why doesn't this work?
+(define (move-right lop delta-x)
+  (match lop
+    [empty empty]
+    [(cons (posn x y) rst) (cons (make-posn (+ x delta-x) y) (move-right rst))]))
+
+ [empty empty] matches lop!! need to use '() instead!!
+
+
+308:
+
+your second pattern / expr - (phone a s f) (make-phone a s f) seems like too much. We just want to return p as is if not matching the 713 pattern
+
+
+309:
+
+(define (words-on-line llos)
+  (match llos
+    [empty empty]
+    [(cons fst rst) (cons (length fst) (words-on-line rst))]))
+
+[empty ...] will match none empty llos. need to '() !!
+
+
+
+
+---------------------- Chapter 4 ------------------
+
+313:
+not sure if using blue-eyed-child? is what they want. other way to do it?
+
+314:
+Reformulate the data definition for FF with the List-of abstraction. how??? FF is just [List-of FT] 
+Now do the same for the blue-eyed-child-in-forest? what does this mean?? use [List-of FT] instead of FF in signature?
+
+
+315:
+can I do this cleaner?
+
+
+
+
+316: 
+what is the parameter type for atom? 
+
+
+
+
+318:
+
+intuively I had depth-sl add 1 to the greater of sum of first or rest. see below. but this will do + 1 for each element in the list which is not what we want. we want +1 for the entire list so now doing +1 in depth. Is therer a better way? makes sense for depth-sl to handle all of its depth as per the purpose "The depth of a list of S-expressions is the maximum depth of its items plus 1"
+
+(define (depth-sl sl)
+            (cond [(empty? sl) 0]
+                  [else
+                   (local ((define depth-first (depth (first sl)))
+                           (define depth-rest (depth-sl (rest sl))))
+                     (+ 1 (if (> depth-first depth-rest)
+                         depth-first
+                         depth-rest)))]))
+
+
+
+
+320:
+Now integrate the definition of SL into the one for S-expr. Simplify count again. Consider using lambda. - count.v3 not sure about your solution here. maybe can simplify more somehow? I can't say that it is berter that count.v2. I think thay want something more - Note This kind of simplification is not always possible, but experienced programmers tend to recognize such opportunities.
+
+
+321:
+do not know what to do here. skipping
+
+
+-------------------------------------
+19.4 Designing with Intertwined Data
+
+do not understand this:
+Finally, if you are stuck in step 5, remember the table-based approach to guessing the combination function. In the case of intertwined data, you may need not only a table per case but also a table per case and per function to work out the combination.
+
+---------------------------
+19.5 Project: BSTs
+since node is a compound type, why doesn't node have its own helper function? and why does BT acces the selectors directly? same for 19.1 Trees
+
+(define-struct no-info [])
+(define NONE (make-no-info))
+ 
+(define-struct node [ssn name left right])
+
+***(define (fn-for-node n) ...) ***
+
+; A BT (short for BinaryTree) is one of:
+; – NONE
+; – (make-node Number Symbol BT BT) 
+
+
+323:
+first hint "Consider using contains-bt? to check the entire tree first". I used this only on result of natural recursion.
+how to use it for entire tree??? 
+
+
+336:
+Given the complexity of the data definition, contemplate how anyone can design correct functions
+???
+
+Why are you confident that how-many produces correct results? becuase I followed the design recipe?
+
+337:
+
+this looks a bit odd:
+
+(define-struct dir.v3 [name dirs files])
+; A Dir.v3 is a structure: 
+;   (make-dir.v3 String [List-of Dir.v3] [List-of File.v3])
+
+how to make the template? how does using List-of affect the template? maybe it doesn't and would still need helpers fn-for-lod but we need fn-for-lod to call fn-for dear for the mutual reference. how to templat this? I think we still need to fully define fn-for-lod 
+
+(define (fn-for-dir-v3 d)
+  (... (dir.v3-name d)        ;String
+       ??? (dir.v3-dirs d))   ;[List-of Dir.v3] 
+       ??? (dir.v3-files d))  ;[List-of File.v3] 
+
+
+(define (fn-for-dir d)
+  (local ((define (fn-for-dir d)
+            (... (dir-name d)                    ;String
+                 (fn-for-lod (dir-dirs d))       ;[List-of Dir] 
+                 (fn-for-lof (dir-files d))))    ;[List-of File]
+
+          (define (fn-for-lod lod)
+            (cond [(empty? lod) (...)]
+                  [else
+                   (... (fn-for-dir (first lod))     ;Dir
+                        (fn-for-lod (rest lod)))]))) ;[List-of Dir]
+    (fn-for-dir d)))
+
+final simplification is so small. crazy
+
+
+338:
+Why are you confident that how-many produces correct results for these directories???
+
+
+
+340:
+
+the test is very messy. probably should use functions instead  of lmabda?
+; Dir -> [List-of String]
+; produces list of all names and files in d (just the first level. just like ls command)
+(check-satisfied (ls D3)
+                 (lambda (l)
+                   (and
+                    (andmap (lambda (s)               ; all items in produced list are either a file or folder - None extra in produced list
+                             (or (find-dir? s D3)
+                                 (find-file? s D3)))
+                           l)
+                    (and (andmap (lambda (d) (member? (symbol->string (dir-name d)) l)) (dir-dirs D3))  ; all names of files and folders of d are in produced list - None missing in produced list
+                         (andmap (lambda (f) (member? (file-name f) l)) (dir-files D3))))))    
+
+
+
+342 :
+can probably simplify find
+
+skipping challenge find-all. Don't know how to do it. Try again later
+
+
+
+
+343:
+added a param to accumulate path. not sure if this is what they wanted since never mentioned. saw solution without. must be another way! skipping. come back to this
+
+
+how to test??? ingeneral how to test with with file system. He can't run the tests for example. some kind of set up for the test? create the directory or at least provide it?
+
+Can at least make sure that everything in res is in expected and vise versa. 
+
+
+
+
+344:
+skipped finding folders. don't understand - "if you solved the challenge part of exercise 342 your new function can find directories, too.". finding folder and file are not the same since file name is last and folder second last. would need to accomodate both? also currently cannot find folder with full paths in path
+
+
+
+
+21.1 Interpreting Expressions
+
+345:
+
+do not understand "Let’s use BSL-expr in analogy for S-expr for the new class of data"
+
+not so sure about my data definition:
+(define-struct add [left right])
+; an Add-Expr is (make-add BSL-expr BSL-expr)
+; interp. represents BSL expresion (+ BSL-expr BSL-expr) 
+
+(define-struct mul [left right])
+; an Mul-Expr is (make-mul BSL-expr BSL-expr)
+; interp. represents BSL expresion (* BSL-expr BSL-expr)
+
+; An BSL-expr is one of: 
+; – Number
+; – Add-Expr
+; - Mul-Expr
+
+
+I rememeber them doing smthing like below
+
+; An BSL-expr is one of: 
+; – Number
+; - (make-add BSL-expr BSL-expr)
+; - (make-mul BSL-expr BSL-expr)
+
+
+and then template can be -
+
+(define (fn-for-bsl-exp bexp)
+            (cond [(number? bexp) (... bexp)]
+                  [(add? bexp) 
+                  (... (fn-for-bsl-exp (add-left bexp))
+                  (fn-for-bsl-exp (add-right bexp)))]         
+                  [(mul? bexp) 
+                  (... (fn-for-bsl-exp (mul-left bexp))
+                (fn-for-bsl-exp (mul-right bexp)))]))
+
+this would be similar to what the they did with BinaryTree in 19.5 Project: BSTs
+
+Ask on group!
+
+Interpret the following data as expressions:
+(make-add -1 2)
+
+(make-add (make-mul -2 -3) 33)
+...
+
+346:
+skipped. do not understand what they want. We always end up with a numeric value??
+
+
+
+350: 
+not sure about my answer
+
+351:
+my solution 
+(define (interpreter-expr sexp)
+  (eval-expression (parse sexp)))
+
+I do not check for parse error. on error, error seems to go directly to top (like an exception)
+not sure if this is clean. Do not know how to check for error 
+
+
+
+
+357:
+"The use of this uncovered form of recursion introduces a new element into your computations: non-termination. That is, a program may run forever instead of delivering a result or signaling an error" - don't understand why it is different
+
+skipped -  construct an input for eval-definition1 that causes it to run forever. please do it
+
+
+
+
+358:
+
+3. the function’s body, which is a variable expression. - shouldn't this be BSL-fun-expr??
+
+(define (g y) (f (* 2 y)))
+
+(define (h v) (+ (f v) (g v)))
+
+are function expressions and not variable expressions
+
+
+360:
+
+not sure about stub vlaues for both functions
+
+not really following template of BSL-da-all for the implementation. the con one not to bad but the func one seems messy
+
+not if should include symbol name in error message. doing it for now
+
+
+implemetation for function part is identical to 358: lookup-def 
+
+
+362:
+
+parse-expr: 
+your checks here are very messy specifiacally have to check for ' and '* in many places. you check for them again (not (or (symbol=? (first sl) '+) (symbol=? (first sl) '*))) to catch 
+(check-error (parse-expr '(* 2)) WRONG)
+(check-error (parse-expr '(+ 2)) WRONG) 
+
+and also in parse-atom to catch 
+(check-error (parse-expr '+) WRONG)
+(check-error (parse-expr '*) WRONG)
+
+what would happen if we add more operations? we would have to add all these checks for the new operation as well.
+maybe can centeralize the checks somehow and reduce from 3 to one??
+
+
+parse-defs -
+
+do not like your solution. better way to do this?  
+you used the regular list template and you open the returned BSL-da-all to append back onto it. his feels wrongon extra
+you are not performing any validity checks on the definitions
+
+
+##########
+
+skipping adding more stuff for now. come back to this... "At this point, you know a lot about interpreting BSL. Here are some of the missing pieces: Booleans with cond or if; Strings and such operations string-length or string-append; and lists with '(), empty?, cons, cons?, first, rest; and so on"
+
+###########
+
+
+363:
+
+not sure about my solution here. AOG!
+what do they want here? - "Eliminate the use of List-of from Xexpr.v2.""
+
+
+
+367:
+Not sure at all about my template here. I am using mutual reference and they mention just self reference. AOG!
+
+368:
+I think my definition is ok but not sure about the template using list-of-attributes? since they ask me to use the new type in the signature for list-of-attributes? itself. so then I probably can't use it in the template??. AOG!
+
+370:
+not sure about my solution for word? "checks whether some ISL+ value is in XWord". I assume they mean that it is an XWord. my solution is quiate messy AOG!
+
+how to I make a template for  XWord?? AOG!
+
+
+
+
+371:
+
+not sure about my definition. 4 clauses seem like too much. how do I even test if correct? I guess we would need this if a standalone string was not included. However:
+"so that you can represent XML elements, including items in enumerations, that are plain strings"
+a standalone string should be included as well so this should be good:
+
+
+; An Xexpr.v3 is one of:
+;  – String
+;  – (cons Symbol (cons Attribute*.v3 [List-of Xexpr.v3]))
+;  – (cons Symbol [List-of Xexpr.v3])
+
+
+
+372:
+
+"Make sure to formulate these tests in such a way that they don’t depend on the BT constant" Why?? how??
+
+"Then explain how the function works" seems unnecessary. why?
+
+374:
+"The data definitions in figure 127 use list. Rewrite them so they use cons." What difference does this make??? it is just a list with one element. (cons X empty) or (list X)
+
+; An XItem.v2 is one of: 
+...
+; – (cons 'li (cons [List-of Attribute] (cons XWord '())))
+...
+; – (cons 'li (cons [List-of Attribute] (cons XEnum.v2 '())))
+
+vs
+
+; An XItem.v2 is one of: 
+..
+; – (cons 'li (cons [List-of Attribute] (list XWord)))
+...
+; – (cons 'li (cons [List-of Attribute] (list XEnum.v2)))
+
+
+Ignoring [List-of Attribute] in templates for now
+
+your process of designing the functions was so so. since the are mutual reference you are confused whuch to satrt with. you started with th enum one and then used it in the tests for item. not sure about this
+
+
+
+
+375.
+is eliminating repetition a good enough reason to call just once instead of twice?
+
+
+
+
+377:
+
+tests for replace-hellos-enum and replace-hellos-item very log and messy
+
+you did templates for  XItem.v2 and XEnum.v2 which include the [List-of Attribute]  but they look very bad. you check for the attribute list for each cluase in cond. AMybe a cleaner way to do this???
+
+
+380:
+skipping. How can I change  1Transition (I guess solution would be to add a third element - the keyevent) without changing find which expects a list of list of two element. AOG!
+
+
+22.3 Domain-Specific Languages
+Configuration: 
+
+(define xm0
+  '(machine ((initial "red"))
+     (action ((state "red") (next "green")))
+     (action ((state "green") (next "yellow")))
+     (action ((state "yellow") (next "red")))))
+
+; An XMachine is a nested list of this shape:
+;   `(machine ((initial ,FSM-State)) [List-of X1T])
+; An X1T is a nested list of this shape:
+;   `(action ((state ,FSM-State) (next ,FSM-State)))
+
+I do not understand the XMachine data definition properly. In the definition it appears that it would be a list with 3 elements:
+
+1. 'machine
+2. `((initial ,FSM-State))
+3. [List-of X1T]
+
+However, from the data example (and the fact that it is an Xexpr) I know that the intention is different and that it is a list of the form:
+
+1. 'machine
+2.  `((initial ,FSM-State))
+3. X1T-1 
+... 
+X1T-n
+
+where is seems that [List-of X1T]is expanded and included in the list  ([List-of X1T] is consed onto)
+
+Asked on Group - answered
+
+385:
+read-xexpr on saved page ford-2014.html produces Xexpr without the xml section we need
+
+386:
+
+using Xexpr.v2 functions on Xexpr.v3. Probably a problem. Had to modify list-of-attributes 
+
+;xexpr-name, which extracts the tag of the element representation;
+;xexpr-attr, which extracts the list of attributes
+;xexpr-content, which extracts the list of content elements.
+;list-of-attributes?
+;find-attr
+
+
+can't test with stock webpage since read-xexpr is ommitting part we need. using teststocl.html which is just the relevant part
+
+
+the template for xexpr.v3. is this correct?
+
+(define (fn-for-xexpr.v3 x)
+  (cond [(symbol? x) (... x)]
+        [(string? x) (... x)]
+        [(number? x) (... x)]
+        [else
+         (local ((define loa (xexpr-attr x))
+                 (define content (xexpr-content x)))
+           (if (empty? loa)
+               (... (first x)                   ;Symbol
+                    (fn-for-lox content))       ;[List-of Xexpr.v3]
+               (... (first x)                   ;Symbol
+                    (fn-for-loa loa)            ;Attribute*.v3
+                    (fn-for-lox content))))]))  ;[List-of Xexpr.v3]
+
+
+387:
+
+the signature form cross
+; [List-of Symbol] [List-of Number] -> [List-of (list Symbol Number)]
+
+how to specify the inner pair? (list Symbol Number) looks wrong to place in signature. Maybe needs its own type??
+
+in part 3 
+
+https://www.htdp.org/2019-02-24/part_three.html#%28part._sim-dd._sec~3add-similarities%29
+
+I see this 
+
+; A [List X Y] is a structure: 
+;   (cons X (cons Y '()))
+
+
+not sure about template. what to do with lon??
+
+(define (cross los lon)
+  (cond [(empty? los) (... lon)]
+        [else
+         (... lon                             ; treating as atomicish and not using selectors here??
+              (first los)                     ;Symbol
+              (cross (rest los) lon))]))      ;[List-of Symbol]
+
+not sure how to handle 
+(cross (list 'a 'b) empty))
+
+either  (check-expect (cross (list 'a 'b) empty)) empty) which doesn't make the most sense in this section since will need to add this as a clause
+
+or (check-expect (cross (list 'a 'b) empty) '((a 0)(b 0)))
+
+maybe assume that lon is never empty???
+
+388:
+ I think they assume here that both lists are ordered by employee so we can easilsy and simultaneously retrieve the corisponding work record for the employee
+I tried sorting but the will have to change tests
+
+
+
+23.5 Designing Functions that Consume Two Complex Inputs:
+The proper approach to designing functions of two (or more) complex arguments is to follow the general recipe...
+... Three situations you are facing:
+
+1. one param plays dominiant role.
+2. both params range over same class and must have same size. both params have Equal status and purpose suggests that they are processed in synchronized manner 
+3. no obvious connection between the params
+
+in many of the following excercises it was not clear to me which situation I am facing. review the excercises and try to determine the proper situation!!
+
+todo!
+
+see also chapter 5: 25.1 "Recursion without Structure" for good example of the different approaches.
+https://www.htdp.org/2019-02-24/part_five.html#%28counter._%28figure._fig~3abundle-template-bad%29%29
+it seems that with one as atomic approach you are not allowed to call a function on it??? I did this a whoel bunch. 
+
+393:
+
+union - is it ok to use append? do they want more manual? is it ok to have duplicates? AOG!
+
+
+394:
+
+initially it seems like we should use the second case for processing simeoltanesly but then we miss to test\handle both cases of lists being empty. should probab;y use the cross product tab;e here
+
+
+395:
+
+cluases can be simplified. todo!
+
+397:
+very very messy. not sure which of the three it fits into. the whole thing isa mess. 
+you first check that both list are ok. each contain for the other. your code here is repetetive and can be placed in a function. you then go over one and retrieve it's record. AOG!
+
+
+
+
+399:
+
+random-pick - reusing list-pick
+
+400:
+Can DNAprefix or DNAdelta be simplified???
+
+401:
+
+it got confusing using the cross product table for sexp=? which is mutually recursive S-expr with [List-of S-expr]
+; An S-expr (S-expression) is one of: 
+; – Atom
+; – [List-of S-expr]
+
+I think I did ok. review??
+
+402:
+the problem I have been having. How to determine the correct situation. Why not #3 (cross product) here? when to use cross product? 
+
+they state :
+
+3. If there is no obvious connection between the two parameters, you must analyze all possible cases with examples. Then use this analysis to develop the template, especially the recursive parts.
+
+
+maybe the key here is "If there is no obvious connection between the two parameters". need to look at cases where you used croos table and understand better what "no obvious connection" means vs places #1 and #2
+
+
+
+Projections and Selections :
+"If you run the above code in DrRacket, you get the error message
+first argument of equality cannot be a function"
+
+started getting this only after fully defining the function in 405. don't fully understand it. I think it is has trouble comparing the predicates in the schema (string? boolean? ...) soewhow. don't understand!
+
+these work
+ (check-expect school-db school-db)
+ 
+ (check-expect (test school-db) school-db)
+ (define (test db) db) 
+
+(define (project db labels)
+  (local ((define schema  (db-schema db))
+          (define content (db-content db))
+          ; Spec -> Boolean
+          ; does this spec belong to the new schema
+          (define (keep? c) ;(member? (first c) labels))
+            false)
+    (make-db (filter keep? schema)
+             empty)))
+
+doesn't work:
+
+(define (project db labels)
+  (local ((define schema  (db-schema db))
+          (define content (db-content db))
+          ; Spec -> Boolean
+          ; does this spec belong to the new schema
+          (define (keep? c) ;(member? (first c) labels))
+            true)
+    (make-db (filter keep? schema)
+             empty)))
+
+
+these don't work and this seems to be the key:
+
+(check-expect (list string?) (list boolean?))
+(check-expect string? boolean?)
+
+we probably cannot compare the schema!
+
+
+
+405:
+had to define lables constant. A bit confusing
+first argument of equality cannot be a function with full db test (including schema) for project. understand this
+
+--->>>
+
+408:
+
+reused project. a bit strange because we need to create a db to pass to project and then extract the content again
+
+
+409:
+skipping redo AOG!
+many problems here:
+
+do we need to reorder schema as well or just content??? chose to do both
+
+I guess I followed the recipe and split into reordering schema and content. still messy process
+
+used thier hint to use list-ref and came up with idea to have list of indexs that I can use for both reordering the schema and row, however generating the list is terrible:
+
+; String -> Number
+          ; produces index of s in schema
+          (define (get-index-from-schema s)
+            (local ((define (get-index schema i)
+                      (cond [(empty? schema) (error "error")]
+                            [else
+                             (if (string=? (first (first schema)) s)
+                                 i
+                             (get-index (rest schema) (add1 i)))])))
+              (get-index schema 0)))
+
+          (define reorder-index-map (map get-index-from-schema lol))
+
+did not really follow a recipe for get-index-from-schema and windeg it
+
+
+test for reorder: can't check-expect reorder with db. probably need to check schema and content separatley? like they did for project. We need to check that both schema is good and content. how do we do this? I think we cannot compare schema beacuse it has functions. maybe they don't expect us to reorder schmema
+
+
+skipping second part - study what has to be changed if lol contains fewer labels than there are columns and strings that are not labels of a column in db.
+
+410:
+
+chose to use cross product for union-content. seems the right way to go
+
+
+411:
+
+do we update schema as well?  updatating but not testing
+
+do not know how to test schema along with content. we probably cannot test schema becuasse of function comarission:
+cannot do something like this:
+(check-expect (list string?) (list boolean?))
+(check-expect string? boolean?)
+
+not exactly following recipes and winging it.
+
+
+throwing error for base case in get-translation is odd
+
+revisit and redo
+
+
+####################### from here already asked Ben #########################
+
+
+
+Intermezzo 4: The Nature of Numbers
+=====================================
+
+412:
+
+inex+.v2 is very messy. you tacked on the off by one check at the beginging, turin it into equal and then call yourself again. hmm... not sure if this is even necesary. to go through all checks again. did not do it in an organized way. can we simlify things?
+AOG! todo! simpilify
+
+
+413:
+
+many different conditions here: 4. checkong for both mantissa and exponent out of range. including solution for 1 extra of exponent if mantissa is small. Not sure if all this is necessary. 
+
+The clauses are very complex and can probably be simiplified. todo! simplfy cluases 
+
+
+414:
+ask_ben
+add:
+
+What would you expect?
+??
+
+
+
+sub:
+template for function? need data definition? 
+ why is the second case happening?
+
+
+415:
+ask_ben
+how to design the function to find n? which data definition anf template?
+how to test?
+what is the parameter?
+
+-------------
+Underflow:
+
+do not understand this
+"Concretely, approximating 1250 with (create-inex 12 1 2) drops significant digits from the mantissa, but the result is always within 10% of the number to be represented. Approximating an underflow, however, means dropping the entire mantissa, meaning the result is not within a predictable percentage range of the true result"
+
+
+
+416:
+ask_ben same as 415
+
+
+------
+*SL Numbers:
+do notunderstand - rational irational exact inexact real etc very confusig
+skipping this whole thing until end of chapter
+
+todo! understand this
+
+417:
+ask ben
+for both ISL and racket I get the sane result:
+(expt 1.001 1e-12) 
+#i1.000000000000001
+what do I see???
+
+
+418: 
+ask_ben
+"Which answer is more useful?""
+what does it mean to be more useful? to better fit general usage?
+the second one is very long, probably takes up lots of memory and resources to work with, so for general usage we are probablt better of with the first answer.
+However, if we need the precise answer then we need the second one
+
+419:
+"If a number system uses only 15 significant digits, we run into problems when adding numbers that vary by more than a factor of 10^16"
+ - do not understand this
+
+ what is a number system that uses only 15 significant digits? 
+
+ "1.0 * 10^16 + 1 =  1.00000000000000001 * 10^16" 
+
+ why?
+
+ I get :
+
+ 10000000000000000.1
+
+ Evaluate (exact->inexact (sum (map inexact->exact JANUS))) and compare the result to the three sums above.  
+==
+#i4.2344294738446e+170
+
+this value is a member of the list (second to last). I don't know if this is the sum
+
+
+420:
+No real questions here?
+Can this difference matter?
+obviously Yes
+
+Can we trust computers?
+what is this question ??
+
+
+
+############### Chapter 5 ##################
+
+
+
+chapter 5: 25.1 "Recursion without Structure" :
+interesting. I may have done this kind of thing couple of times expecially in later exercises of chapter 4?
+
+"List item 3 highlights the key difference between bundle and any function in the first four parts of this book. Because the definition of List-of conses an item onto a list to create another one, all functions in the first four parts use first and rest to deconstruct a non-empty list. In contrast, bundle uses drop, which removes not just one but n items at once."
+
+
+
+422:
+
+is this composition? meh... probably ok
+
+(define (bundle s n)
+  (map (lambda (l) (implode l)) (list->chunks s n))) 
+
+
+423:
+you check\adjust value of n for case where less then length of string. not sure if this is what they want but substring exploded witout it. probably ok
+
+
+
+428:
+done. answered ben
+is there a better way to handle the same pivots? 
+
+
+
+not sure if my solution is what they want. 
+I think they ar going for making an abstract quicksrot function that takes a comparison function which allows you to define your own soritnf function (sort descending, sort by string length etc) which I demonstrate
+
+I'm not liking your solution. you filter 4 times! todo! review!
+1 for smallers
+one for not smallers
+one for not smallers and not pivots
+1 for just pivots
+
+is there a better way to handle this? better way to handle pivots?? 
+
+
+(define smallers (filter (lambda (n) (f n pivot)) alon))
+                  (define largers-with-pivot (filter (lambda (n) (not (f n pivot))) alon))
+                  (define largers-without-pivot (filter (lambda (n) (not (equal? pivot n))) largers-with-pivot)))
+            (append (quick-sortx smallers f)
+                    (filter (lambda (n) (equal? n pivot)) alon)
+
+431:
+done. answered ben
+answers here are soso. review! do better
+
+-----
+26.2 Termination:
+don't understand this:
+
+"If the design recipe required a guarantee that the new problems were “smaller” than the given one, it would terminate. But, imposing such a restriction would needlessly complicate the design of functions such as bundle"
+
+how would we guarantee? what do they mean? how is this different than the termination argument mentioned directly below
+
+
+432:
+asked ben. waiting for answer
+
+missing examples/tests
+"justify the design of food-create" not sure how they want me to justify. tried to answer the 4 question. Cannot say what the reduction step is (solving an easier problem than the original) since all we do is try again.
+
+
+436:
+ask_ben - answered
+same probelm as 432. What is the reduction step here. How are we making the problem smaller for the recursive call if we just try again? todo! 
+
+
+437:
+ask_ben - answered. 
+conclusion? can use this template I guess or they are sort of the same? 
+
+438:
+ask_ben - done. Will get back to me on "right words"
+"Use the design recipe to find the right words" which words are we looking for??
+
+
+443:
+ask_ben 
+I don't understand this. why is it impossible?
+
+
+444:
+largest-common - which approach for template (out of the 3 1 is more important other atomic, process both in parellel, all possibilites?)
+I did a compositon - 1. commons 2. largest of commons. how does this fit into the 3?? 
+You should probably review part 4 (ask ben)and the simultaneous processing section
+https://htdp.org/2019-02-24/part_four.html#%28part._ch~3asimu%29
+you skipped a lot there
+
+
+449
+Do not understand this:
+ask_ben! answered. did not understand answer well
+ "Note The two additional arguments to this helper function change at each recursive stage, but the change is related to the change in the numeric arguments. These arguments are so-called accumulators, which are the topic of Accumulators"
+
+
+
+
+28.1 Newton’s Method:
+
+"The calculation in newton turns #i+inf.0 into +nan.0, a piece of data that says “not a number.” Most arithmetic operations propagate this value, which explains the behavior of newton."
+
+what is +nan.0? 
+what does "Most arithmetic operations propagate this value" mean?
+
+
+456:
+ask_ben - done
+is it ok to use rofumla\implementation for test so that I don't have to calculate expected answer. seems lazy\wrong - yes, ok
+
+457:
+
+
+why is  72/r month mentioned? - for tests!
+
+
+465:
+Ben says that we need to throw error in case first of result is < and test with check-error. I don't know which input can cause this. He said bad input
+
+
+469:
+have ben review:
+solve-single:
+Simultaneous Processing of two non-trivial types. 
+situation #1 eq plays the dominant role 
+did template from Equation + composition
+
+
+
+
+------------------
+
+
+recursive function to count index of given string. Why is this so difficult for me to understand????
+
+
+;; LOS -> Pos
+;; produces the position of the first occurance of string
+;; ASSUME: the list has at least one occurance
+(check-expect (find "aa" (list "aa")) 0)
+(check-expect (find-find "aa" (list "s" aa")) 1)
+(check-expect (find-find "aa" (list "ddd" "s" aa")) 2)
+
+;(define (find-blank bd) 0) ;stub
+
+; 
+; 
+; los              (first bd)    (rest bd)  (find (rest bd))  (find-blank los)  
+; '("aa")             "aa"         empty         error                0
+; '("s" aa")           "s"          "aa"           0                  1
+; '("ddd" "s" aa")    "ddd"      '("s" aa")        1                  2 
+
+
+#;
+(define (find s los)
+  (cond [(empty? los) (...)]
+        [else
+         (... s 
+             (first los)                ;string
+             (find (rest los)))])) ;Los
+
+(define (find s los)
+  (cond [(empty? los) (error "los did not have s")]
+        [else
+         (if (string? (first los) s)
+             0
+             (add1 (find s (rest los))))]))
+
+
+
+
+482.
+the process (the recipe) for design of generative 
+the function purpose already has the how. 
+I usually don't know how in the beginnign and use the design questions and then fill out the how
+I start with examples\ tests I think? 
+I get stuck starting here. What is the order?
+
+I think it should be 
+examples\tests
+design questions
+brief how
+
+
+
+483: 
+
+(board0 ) not liking my process here: 
+had to hack the (create-cols) and sub1 for the row and col. better way??
+
+
+tests for board0 - the order is differernt than I exepcted. need to use check satified and a prdicate?
+
+add-queen - same problem with order if order of board changes
+
+create-n-by-n-grid:
+ signature shaky. I don't like the [List-of X] part how to express that it is n x n ?
+
+ why wasn't the test working with n?
+
+ (check-satisfied (create-n-by-n-grid 2 (lambda (r c) (make-square (- n r) (- n c) #false)))
+                 (lambda (res)
+                   (set=? res
+                          (list (make-square 0 0 #false) (make-square 0 1 #false)
+                                (make-square 1 0 #false) (make-square 1 1 #false)))))
+
+
+
+##### Intermezzo 5: The Cost of Computation
+
+
+so so here proving things in the excercises... but ben reviewed all of it
+
+
+
+
+========== 6:
+
+
+
+494:
+undertsand BEn's answer to why we need the helper
+"sort> needs a recursive helper because it has to look
+at both the current value and the current list to decide the new list.
+
+An accumulator would need to predict where to insert the next list element
+without having seen it yet. That can't happen for numbers."
+
+
+
+binary tree example:
+
+1.
+"number of nodes from the root of the tree to the highest leaf or the number of connections on such a path. The height function follows the second option."
+
+do not understand difference between options
+
+2. 
+"Illustrating this accumulator invariant is best done with a graphical example...
+    1. If abt0 is the complete tree and abt is the subtree pointed to by the circled 1, the accumulator’s value must be 1 because it takes exactly one step to get from the root of abt to the root of abt0."
+
+    shouldn't this be steps from root of abt0 => root of abt? 
+
+
+498:
+do more manual runs. Get big picture. you keep on etting lost folowing the tree and the data structure
+1. understand your solution. what you did with m
+2. understand the hint - Understand Ben's answers
+
+
+            
+510:
+don't know how to solve
+
+
+######
+undeclareds example -
+they go directly from template to adding accumulator without having a complete solution first. how?
+
+
+
+516:
+ben review
+the template is odd. for some reason I expect to see mutual referernce in the template but I don't becuase we need to expand with selectors --- answered
+
+517:
+your LamWithDistance type. is it ok to define it like that?
+
+#### 33.2 Data Representations with Accumulators
+
+; Any ConsOrEmpty -> ConsOrEmpty
+(define (our-cons a-value a-list)
+  (cond
+    [(empty? a-list) (make-pair a-value a-list)]
+    [(our-cons? a-list) (make-pair a-value a-list)]
+    [else (error "our-cons: ...")]))
+
+what is our-cons? Ithink it should be pair??
+
+
+
+(define-struct cpair [count left right])
+; A [MyList X] is one of:
+; – '()
+; – (make-cpair (tech "N") X [MyList X])
+; accumulator the count field is the number of cpairs
+
+
+what is (tech "N")??
+
+518:
+
+I don't address f. just r
+
+519:
+think about this some more
+ask ben
+is it acceptable? I don't know. which is better? which costs more? under which circumstances?
+constant cost vs cost as length gets longer. 
+what is the cost exactly? memory CPU time (big(O))
+
+
+
+####
+"Clearly, solve is quite generic. As long as you define a collection of PuzzleStates, a function for recognizing final states, and a function for creating all “successor” states, solve can work on your puzzle"
+
+what do the mean by defining a of collection of PuzzleStates??? why do we need to define a collection? aren't they created by create-next-states as we move towards a solution? 
+
+-----
+
+
+520:
+can probably understand\explain better better. look at preivous solutions where it was depth first. understand the practical differernce depth vs breadth. see concrete examples of both. have we encountered breadth first before?
+
+ideally the create-next-states would not produce previously generated states? (accumulator)
+
+
+521:
+
+1.
+Using future funtions in the tests. you dod this for render-m, render-river-side-and-people etc 
+
+I am not really testing for something specific. what would failure look like? if the iplementation of the other function change it does not break the tests 
+
+2.
+render-river-side-and-people - not sure about how I handle things here with the invisible missionary. cleaner way?
+
+3.
+RIVER-SIDE-HEIGHT - 
+why are 4 spacers not enough?? why 6 to get the height we want?
+
+4.
+render-group
+only want spacer between people not after last person. IS my implementation ok?
+
+5.
+not sure how dynamic the UI is. Should be one point of control and everything changes size propotionatly
+
+
+###
+"The problem is that returning the final state says nothing about how the player can get from the initial state to the final one... 
+"but at the same time, the accumulated knowledge is best associated with every individual PuzzleState, not solve* or any other function." how would it work with functions?
+
+-----
+
+522:
+
+1.
+ need a final example for final? and found a solution but not sure about how to record the traversel with state at this point. will every state in the traversted list also have it's on traversal list? this seems redundant and very laborious\tedious\repetitive to fill in the solution and write the tests. using empty for now. maybe will need to change this when we implement 
+
+ maybe ignore the accumulator completly for now and just give empty for the examples? at this point?
+
+2.
+accumulator statement. whatshould it describe in this case? describing the difference\relationship between the original argument and the current one is not relevant here?
+
+3. did not have to change render-mc or final at all?
+
+
+523:
+
+testing create-next-states. very tedious. not sure of order. output is appending lists. better way to test?
+
+
+create-all-possible-next-states-from-to has 3 parameters. I think should be a function with two complex parameters and third - the loc is atomic?
+
+
+create-all-possible-next-states-from-to - this list you are constructing. We have never done anything like this. is it valid? tinkering? better way?
+
+
+
+v2 based one htdp1e
+
+-------------------
+
+1.
+state->all-possible-successor-states
+
+better to seperate:
+1. all possible states
+2. legal states
+
+so can test both?
+
+rename
+state->next-states
+(legal-states (all-possible-states)
+
+
+
+2.
+does the idea here of apply-boat-load and filter with legal make sense?
+
+3.
+legal? 
+in order to check if state not encountered, requires crossings (accumulator) to already be set.
+Is this order good?
+ (filter legal? all-possbile-succesor-states-with-crossings)
+
+would make sense to even bother setting crossings for illegal states?
+seprate the encountered check from legal?
+
+tests for legal? - 3 functions now. how to test. I guess need to test that all three all called and not get into detailes
+
+
+4.
+the tests for mc-proper-number? are difficult. need to test for two functions. Agian I guess need to test that both get called
+
+5.
+tests for all-numbers-in-proper-range?
+need to test intervals for all 4 numbers? very tedious! maybe need helper function
+
+
+6.
+consider struct for riverbank sides again instead of 4 naturals?
+
+7.
+make-boat-loads-full-capacity
+the base case is weird 
+
+8.
+do the predicates need to have tests as well?
+
+524:
+run movie - the list returned from solve does not have the final sytate. should it?
+
+looks like render is off whne only missionaries not alignerd to left but when no cannibals, aligned to right
+-------------
+htdp1e cannibals and missionaries:
+
+
+Exercise 32.2.2
+1.
+make-boat-loads-full-capacity - 
+the base case is weird 
+(make-boat-loads-full-capacity 0) will produce (list (make-boat-load 0 0)) empty makes more sense but can't figure out how to solve without that. they have solution but would rather not look??
+
+2.
+the tests for make-boat-loads-full-capacity and make-BOAT-LOADS using check-satisified and the predicats. Is there a better way?
+
+3. 
+do the predicates need to have tests as well?
+
+
+
+Exercise 32.2.3
+1.
+cannot place (define BOAT-LOADS-MC (make-BOAT-LOADS BOAT-CAPACITY)) with the regualr definitions and need top move main functions belkow all the helpers. does not look right
+
+
+2.
+tests for take-boat-trip. what do we need to test -- 
+direction change 
+can take trip --?
+cannot take trip
+
+3. 
+template for take-boat-trip -
+I think just all selectors for both. combination?
+
+4. 
+take-boat-trip  -- the implementation --
+
+5.
+states->all-possible-successor-states - more tests? continuing wit hsame testing method as before with LAYER-1-STATES and all-possible-successor-states-for-layer-1?
+
+
+
+Exercise 32.2.4:
+
+A state is legal if it contains the proper number of missionaries and cannibals -- why do we need to check for this? when\how will we not have proper number of mc. maybe state generation is diffeernt somehow?
+
+-
+
+!!!!!!
+I'm thinking maybe we can generate even ilegal states with take-boat-trip and then no need for checking the checks inside and producing false if not possible. just do it all and worry about filtering legal ones here
+
+!!!!!
+
+Exercise 32.2.5:
+
+final? just compare to PS-FINAL??
+
+Develop a generalized version that consumes a list of states and returns the sublist of final states -- why do we need this? how can we have more than one final state?
+
+
+Exercise 32.2.6:
+
+what happens when not solvable? will loop for now
+
+Exercise 32.2.7:
+1.
+he function is an adaptation of mc-solvable? that not only produces true when it finds a solution but a list of river crossings if a given missionary-and-cannibal problem is solvable --
+what is the return in the signature here? it sounds like they want both #true and the list, 
+this is a bit weird 
+
+[List #true [List-of PuzzleState]] 
+
+2.
+they are still not addressing non solvable yet?
+
+3.
+"Modify the state representations so that they accumulate the list of crossings that got the group to this particular state" - what group? 
+
+I'm thinking to add\accumulate the state at state->all-possible-successor-states
+
+4. 
+mc-solution -- basic value for stub?
+
+5. adding in the new feild -- lots of work updtaing all the examples . many tests. very tedious
+
+6. 
+going with idea of states in crossing list to all have thier crossings empty. or else very very tediouds to figure out tests and will be very very long
+
+7.
+mc-solution --
+how to eliminate duplicatgion of (final-states lops) in first clause of cond
+
+
+
+
+-------------
+
+#### 33.3 Accumulators as Results
+
+"Most programmers expect “draw” to mean the action of adding a triangle to some canvas...
+
+It is easy to generalize from scene+line to add-triangle and from there to add-sierpinski" -- donn't understand this
+
+
+Sample Problem: Design the add-sierpinski function...
+"Note how this problem implicitly refers to the above process description of how to draw a Sierpinski triangle" --
+which above process description?
+I guess this is the only one --
+
+"The given problem is a triangle. When the triangle is too small to be subdivided any further, the algorithm does nothing; otherwise, it finds the midpoints of its three sides and deals with the three outer triangles recursively."
+
+
+
+Figure 191: Accumulators as results of generative recursions, a skeleton -- where is the accumulator here??
+
+------
+
+525:
+
+add-triangle -- since we are asked to us scene+line, the scene's y grows down so we get the flipped representation of the triangle we expect.I therfore naturally implemeted a solution that produecs the expected triangle. but looking at the data they provide for add-sierpinski, they are giving the flipped triangle so that add-sierpinski (add-trangle) will create the triangle we expect. so add-triangle so just produce the triangle on the scene as given
+
+are coordicates abc screen coordicnates or regularr?
+
+(define MT (empty-scene 400 400))
+(define A (make-posn 200  50))
+(define B (make-posn  27 350))
+(define C (make-posn 373 350))
+ 
+(add-sierpinski MT A B C)
+
+
+add-triangle -- probably not necissary to provide equilateral triangle for tests
+
+too-small? tests do not use THRESHOLD constant, rather points calculated using its value (10), but the function uses THRESHOLD so tests break when changing THRESHOLD.
+How to write tests here with THRESHOLD?
+
+
+526:
+
+5. 
+
+are coordicates abc screen coordicnates or regularr?
+
+1.
+why are they using factor instead of just the angle?
+
+2. 
+first way polar-coordinate -> complex -> posn. help getting started. where am I stuck?
+
+3. 
+going trig route. tests for circle-pt. again using helpers in the expected result. 
+
+4. 
+where is circle-pt used? as helper to produce point arguments for add-sierpinski? but as far as I can tell based on points they provide (see 525) add-sierpinski expects the flipped triangle coordinates
+
+5.
+
+"Also keep in mind that on-screen positions grow downward, not upward" -- 
+a point produced for angle 120 would be displayed on screen at the position\point produced for angle 240. 
+What do they expect? do they want me to produce a point that will be displayed as expected (subtract from center y instead of add)?
+
+
+
+527:
+
+1.
+answers to design questions. specifiaclly the combination -- sos so
+
+
+2
+bit of a mess with on-screen positions growing downwards. working regulalry with points and created my own scene+line-up to display given line properly
+
+are coordicates screen coordicnates or regularr?
+
+3.
+the sudgesseted 0.15 and 0.2 angle change appears to be way too small??
+
+4. 
+got formulas for end-point and segment-point off the net
+
+-----
+
+
+528:
+
+1.
+answers to design questions. specifiaclly the combination -- sos so
+
+2.
+are coordicates abc screen coordicnates or regularr? - going with screen coordicates similar to 525
+
+
+3.
+small-enough? - how to test against constant SMALL-ENOUGH-AREA inside. tests break if constant changes. I remeber seeing something about this somewhere
+
+------
+
+look at  https://htdp.org/2003-09-26/Book/curriculum-Z-H-1.html#node_toc_node_sec_32.2
+for missionaries and cannibals
+
+=======================
+
+How to Code:
+(Gdrive/Study/How_to_Code_xxx folders fore following along with excercies)
+
+11 Worklist Accumulators 2, Part 2 
+-> 9:20 work through order of traversal an changing order of arguments (depth vs breadth first)
+
+Worklist Accumulators 2, Part 4 do it starting / stopping video
+
+probably redo all of acuulators
+
+
+
+
+TODO Ben's replies:
+523/524:
+add back riverside data defintion? 
+
+
+

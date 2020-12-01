@@ -1,0 +1,62 @@
+.versionbox {
+   display: none !important;
+}
+
+@media all and (max-width: 720px) {
+   div.topbar {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-top: 1rem;      
+   }
+   div.topbar > a {
+      padding-left: 1em;
+   }
+   div.topbar div.tocset {
+      display: block;
+      position: initial;
+      padding-top: 0.5rem;
+   }
+   div.topbar div.tocset table { display: table; }
+   div.topbar div.tocset tbody { display: table-row-group; }
+   div.topbar div.tocset tr { display: table-row; }
+   div.topbar div.tocset td { display: table-cell; }
+   div.topbar div.tocview { display: initial; }
+   div.topbar.hidden div.tocview { display: none; }
+   div.topbar.hidden div.tocset { display: none; }
+   div.topbar div.tocset a { padding: 0; }
+}
+
+@media all and (min-width: 720px) { div.topbar { display: none; } }
+
+table.center > tbody > tr > td > blockquote { text-align: center; }
+
+.exercise {
+   margin-left: -1em;
+   font-weight: bold;
+}
+
+.hint-box {
+   background: #eee;
+   border: 1px solid #bbb;
+   border-radius: 5px;
+   margin-left: 1em;
+   padding: 0.5em;
+}
+
+.hint-box > p:last-child {
+   margin-bottom: 0px;
+}
+
+.summary-box {
+   display: table;
+   background: #fcf7f3;
+   border: 1px solid #ba9;
+   border-radius: 5px;
+   margin-left: 1em;
+   padding: 0.5em;
+}
+
+.summary-box > p:last-child {
+   margin-bottom: 0px;
+}
