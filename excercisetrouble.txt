@@ -1466,7 +1466,7 @@ we probably cannot compare the schema!
 had to define lables constant. A bit confusing
 first argument of equality cannot be a function with full db test (including schema) for project. understand this
 
---->>>
+
 
 408:
 
@@ -1504,6 +1504,8 @@ test for reorder: can't check-expect reorder with db. probably need to check sch
 
 skipping second part - study what has to be changed if lol contains fewer labels than there are columns and strings that are not labels of a column in db.
 
+
+
 410:
 
 chose to use cross product for union-content. seems the right way to go
@@ -1524,6 +1526,8 @@ not exactly following recipes and winging it.
 throwing error for base case in get-translation is odd
 
 revisit and redo
+
+-->>
 
 
 ####################### from here already asked Ben #########################
